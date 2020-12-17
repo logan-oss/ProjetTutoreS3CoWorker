@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "apollo-server-express": "^2.19.0"
+  },
+  "name": "apollo_grapgql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
