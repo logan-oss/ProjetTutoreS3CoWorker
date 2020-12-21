@@ -34,9 +34,17 @@ type Lessor implements User {
   companyLocation : String!
 }
 
+type CoWorking {
+  id: ID!
+  name: String!
+  address: String!
+  owner: String!
+}
+
 type Query{
   Pro: [Pro],
   Lessor:[Lessor],
+  CoWorkings: [CoWorking],
 }
 
 `;

@@ -22,11 +22,19 @@ let Lessor =[
     companyLocation: "Facebook",
   }
 ];
-
+let CoWorking = [
+  {
+    id: 1,
+    name: "Hamid",
+    address: "5 rue des tilleuls 93007",
+    owner:  "Loueur1",
+  },
+];
   const resolvers = {
       Query: {
           Pro: () => Pro,
-          Lessor:() =>Lessor
+          Lessor:() =>Lessor,
+          CoWorkings: ()=>CoWorking
       }
   }
 
