@@ -32,16 +32,17 @@ const typeDefs = gql`
     }
 
     type CoWorking {
-      id: ID!
-      name: String!
-      address: String!
-      owner: String!
+        id: ID!
+        name: String!
+        address: String!
+        owner: String!
     }
-    
+
     type Query{
-      Pro: [Pro],
-      Lessor:[Lessor],
-      CoWorkings: [CoWorking],
+        Pro: [Pro],
+        Lessor: [Lessor],
+        CoWorkings: [CoWorking],
+        CoWorking(id: ID!): CoWorking
     }
 `;
 
