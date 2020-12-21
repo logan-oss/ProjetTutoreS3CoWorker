@@ -1,17 +1,32 @@
-let users = [
-    {
-      id: 1,
+
+let Pro =[
+  {
+    id: 2,
       firstName: "Porayko",
-      lastName: "Logan",
+      lastName: "Geoffrey",
       mail:  "logan@gmail.com",
       phone: "06051258",
       pass: "logandu57",
-    },
-  ];
+    companyName: "google",
+  }
+];
+
+let Lessor =[
+  {
+    id: 3,
+      firstName: "Boukada",
+      lastName: "Adel",
+      mail:  "logan@gmail.com",
+      phone: "06051258",
+      pass: "logandu57",
+    companyLocation: "Facebook",
+  }
+];
 
   const resolvers = {
       Query: {
-          users: () => users
+          Pro: () => Pro,
+          Lessor:() =>Lessor
       }
   }
 
