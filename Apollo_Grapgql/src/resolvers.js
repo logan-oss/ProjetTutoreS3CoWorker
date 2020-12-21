@@ -22,6 +22,7 @@ let Lessor =[
     companyLocation: "Facebook",
   }
 ];
+
 let CoWorking = [
   {
     id: 1,
@@ -30,11 +31,12 @@ let CoWorking = [
     owner:  "Loueur1",
   },
 ];
+
   const resolvers = {
       Query: {
           Pro: () => Pro,
-          Lessor:() =>Lessor,
-          CoWorkings: ()=>CoWorking
+          Lessor:() => Lessor,
+          CoWorkings: () => CoWorking
       }
   }
 
