@@ -38,6 +38,7 @@ let CoWorkingdata = [
 ];
 var root = {
     Coworkingg: CoWorkings,
+    Professionnel: Professionnel
   
    
 };
@@ -46,16 +47,15 @@ var CoWorkings = function(args) {
     var name = args.name;
     return CoWorkingdata.filter(CoWorkings =>{  return CoWorkingdata.name == name;})[0];
 }
-/*var CoWorkings = function(args) { 
+var Professionnel = function(args) { 
     var mail = args.mail;
     return CoWorkingdata.filter(CoWorkings =>{  return Pro.mail == mail;})[0];
-}*/
+}
+
 const resolvers = {
     Query: {
-      
         Pro: () => Pro,
-        Lessor: () => Lessor,
-       
+        Lessor: () => Lessor,       
   }
 
 }
