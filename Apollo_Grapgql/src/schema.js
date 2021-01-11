@@ -41,8 +41,11 @@ const typeDefs = gql`
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],
-        CoWorkings(name: String!): CoWorking
+        coworking(name: String!): CoWorking
+        getpersonne(mail: String!): Pro
+
     }
+
 `;
 
 module.exports = typeDefs;
