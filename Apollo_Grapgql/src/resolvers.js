@@ -22,7 +22,7 @@ let Lessor = [
     }
 ];
 
-let CoWorking = [
+let CoWorkingdata = [
     {
         id: 1,
         name: "Hamid",
@@ -36,25 +36,27 @@ let CoWorking = [
         owner: "Loueur2",
     },
 ];
+var root = {
+    Coworkingg: CoWorkings,
+  
+   
+};
 
+var CoWorkings = function(args) { 
+    var name = args.name;
+    return CoWorkingdata.filter(CoWorkings =>{  return CoWorkingdata.name == name;})[0];
+}
+/*var CoWorkings = function(args) { 
+    var mail = args.mail;
+    return CoWorkingdata.filter(CoWorkings =>{  return Pro.mail == mail;})[0];
+}*/
 const resolvers = {
     Query: {
+      
         Pro: () => Pro,
         Lessor: () => Lessor,
-        CoWorkings: () => CoWorking,
-        CoWorking: (id) => {
-            CoWorking.forEach(element => {
-                // Todo: should return something, to debug.
-                // {CoWorking(id: 2) {id}}
-                if (element.id == id) {
-                    return element;
-                }
-            });
+       
+  }
 
-            return null;
-        }
-
-    }
 }
-
 module.exports = resolvers;

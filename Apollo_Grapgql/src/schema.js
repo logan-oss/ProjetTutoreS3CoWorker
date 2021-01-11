@@ -41,8 +41,7 @@ const typeDefs = gql`
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],
-        CoWorkings: [CoWorking],
-        CoWorking(id: ID!): CoWorking
+        CoWorkings(name: String!): CoWorking
     }
 `;
 
