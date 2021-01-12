@@ -42,8 +42,11 @@ const typeDefs = gql`
         Pro: [Pro],
         Lessor: [Lessor],
         coworking(name: String!): CoWorking
-        getpersonne(mail: String!): Pro
-
+        getPro(mail: String!, pass: String!): Pro
+        getLessor(mail: String!, pass: String!): Lessor
+    }
+    type Mutation{
+        CreateProAccount(id:ID!, mail:String!, pass: String!,firstName: String!, lastName: String!,compagnyName:String!): Pro
     }
 
 `;
