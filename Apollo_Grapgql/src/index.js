@@ -1,7 +1,9 @@
+  
 const express = require('express');
 const {ApolloServer, gql} = require('apollo-server-express');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
+const { Db } = require('./db');
 
 const server = new ApolloServer({typeDefs, resolvers});
 

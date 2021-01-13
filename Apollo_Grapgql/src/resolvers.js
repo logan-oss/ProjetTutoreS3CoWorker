@@ -1,3 +1,18 @@
+//------------------------------Base de donnée--------------------------------------//
+/*const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
+
+
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });*/
+//--------------------------------------------------------------------------//
+
 let Pro = [
     {
         id: 2,
@@ -66,8 +81,8 @@ const resolvers = {
                     throw new Error('ID already taken')
                 }
                     
-                },
-                CreateLessorAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
+                }
+              /*  CreateLessorAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
                     let checkID = Lessor.findIndex(lessor=>lessor.id==id)
                         if(checkID==-1){
                             let newPro= {id, mail, pass, firstName, lastName, compagnyName} 
@@ -86,7 +101,7 @@ const resolvers = {
                                     
                                 }
                             
-                        },
+                        },*/
 
             }
         }

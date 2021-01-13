@@ -10,7 +10,6 @@ const typeDefs = gql`
         phone: String
         pass: String
     }
-
     type Pro implements User {
         id: ID
         firstName: String
@@ -20,7 +19,6 @@ const typeDefs = gql`
         pass: String
         companyName : String!
     }
-
     type Lessor implements User {
         id: ID
         firstName: String
@@ -30,14 +28,16 @@ const typeDefs = gql`
         pass: String
         companyLocation : String!
     }
-
     type CoWorking {
         id: ID!
         name: String!
         address: String!
         owner: String!
     }
+<<<<<<< HEAD
    
+=======
+>>>>>>> 97ce4b133655e8119362a58f1c1035159ef8b3d5
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],
@@ -48,7 +48,6 @@ const typeDefs = gql`
     type Mutation{
         CreateProAccount(id:ID!, mail:String!, pass: String!,firstName: String!, lastName: String!,compagnyName:String!): Pro
     }
-
 `;
 
 module.exports = typeDefs;
