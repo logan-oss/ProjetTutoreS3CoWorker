@@ -39,9 +39,9 @@ const User = Conn.define('user', {
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-    
-    Conn.query('SELECT * FROM User').then(function success(result){
-      console.log(result);
-    }, function error(err) {
-      console.log(err);
-    })
+
+  Conn.query('SELECT * FROM User').then(function success(result){
+    console.log(result);
+  }, function error(err) {
+    console.log(err);
+  })

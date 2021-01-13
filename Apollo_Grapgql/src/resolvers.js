@@ -1,4 +1,3 @@
-const { Db } = require('./db');
 //------------------------------Base de donnée--------------------------------------//
 /*const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
@@ -12,7 +11,6 @@ const sequelize = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz
     .catch(err => {
       console.error('Unable to connect to the database:', err);
     });*/
-    
 //--------------------------------------------------------------------------//
 
 let Pro = [
@@ -55,15 +53,12 @@ let CoWorkingdata = [
 ];
 
 
-/*var coworking = function(parent,args) { 
+var coworking = function(parent,args) { 
     var name = args.name;
     return CoWorkingdata.filter(coworking =>{  return coworking.name == name;})[0];
-}*/
-
-var Professionnel = function(args) { 
-    var mail = args.mail;
-    return CoWorkingdata.filter(CoWorkings =>{  return Pro.mail == mail;})[0];
 }
+
+
 
 
 const resolvers = {
@@ -74,8 +69,22 @@ const resolvers = {
         getPro (parent, args) { return Pro.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
         
-}
-}
+    },
+    Mutation: {
+        CreateProAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
+            let checkID = Pro.findIndex(pro=>pro.id==id)
+                if(checkID==-1){
+                    let newPro= {id, mail, pass, firstName, lastName, compagnyName} 
+                    Pro.push(newPro)
+                }else{
+                    throw new Error('ID already taken')
+                }
+                    
+                }
+            }
+        }
+    
+  
 
 
 module.exports = resolvers;
