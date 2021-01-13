@@ -1,4 +1,3 @@
-
 const { Sequelize } = require('sequelize');
 const Conn = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
 
@@ -41,12 +40,19 @@ const User = Conn.define('User', {
     console.error('Unable to connect to the database:', err);
   });
 
- Conn.query('SELECT * FROM User').then(function success(result){
+
+  (async () => {
+    await Conn.sync();
+    const users = await User.findAll();
+    console.log("User:", JSON.stringify(users, null, 2));
+   /* const jane = User.build({ fName: "Mangoov",lName: "Jane",adress: "test",phone: 0658478096, mail: "Jane@gmail.com"  });
+    await jane.save();
+    console.log('Jane was saved to the database!');*/
+  })();
+
+
+  /*Conn.query('SELECT * FROM User').then(function success(result){
     console.log(result);
   }, function error(err) {
     console.log(err);
-  })
-
-
-
-
+  })*/
