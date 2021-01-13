@@ -2,7 +2,7 @@ const express = require('express');
 const {ApolloServer, gql} = require('apollo-server-express');
 
 const typeDefs = gql`
-    interface User {
+    type User {
         id: ID
         firstName: String
         lastName: String
@@ -28,6 +28,7 @@ const typeDefs = gql`
         pass: String
         companyLocation : String!
     }
+
     type CoWorking {
         id: ID!
         name: String!
