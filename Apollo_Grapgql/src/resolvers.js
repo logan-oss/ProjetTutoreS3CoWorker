@@ -1,3 +1,5 @@
+const typeDefs = require('../db');
+
 let Pro = [
     {
         id: 2,
@@ -53,6 +55,7 @@ const resolvers = {
     Query: {
         Pro: () => Pro,
         Lessor: () => Lessor,  
+        Test: () =>
         coworking (parent, args)  {return CoWorkingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
         getpersonne (parent, args) { return Pro.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
     }
