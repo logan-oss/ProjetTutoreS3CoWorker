@@ -10,6 +10,16 @@ const typeDefs = gql`
         phone: String
         pass: String
     }
+
+    type Client implements User { 
+        id: ID
+        firstName: String
+        lastName: String
+        mail: String
+        phone: String
+        pass: String
+    }
+
     type Pro implements User {
         id: ID
         firstName: String
@@ -39,6 +49,7 @@ const typeDefs = gql`
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],
+        GetAll: [Client],
         coworking(name: String!): CoWorking
         getPro(mail: String!, pass: String!): Pro
         getLessor(mail: String!, pass: String!): Lessor
