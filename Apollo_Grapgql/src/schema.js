@@ -37,7 +37,7 @@ const typeDefs = gql`
         address: String!
         owner: String!
     }
-
+   
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],

@@ -38,6 +38,7 @@ let CoWorkingdata = [
 ];
 
 
+
 var coworking = function(parent,args) { 
     var name = args.name;
     return CoWorkingdata.filter(coworking =>{  return coworking.name == name;})[0];
@@ -53,7 +54,7 @@ const resolvers = {
         coworking (parent, args)  {return CoWorkingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
         getPro (parent, args) { return Pro.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
-        
+       
     },
     Mutation: {
         CreateProAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
@@ -65,7 +66,28 @@ const resolvers = {
                     throw new Error('ID already taken')
                 }
                     
-                }
+                },
+                CreateLessorAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
+                    let checkID = Lessor.findIndex(lessor=>lessor.id==id)
+                        if(checkID==-1){
+                            let newPro= {id, mail, pass, firstName, lastName, compagnyName} 
+                            Lessor.push(newPro)
+                        }else{
+                            throw new Error('ID already taken')
+                        }},
+                CreateProAccount(parent, {id,mail,pass, firstName, lastName,compagnyName}){ 
+                    let checkID = Pro.findIndex(pro=>pro.id==id)
+                         if(checkID==-1){
+                             let newPro= {id, mail, pass, firstName, lastName, compagnyName} 
+                             Pro.push(newPro)
+                         }else{
+                            throw new Error('ID already taken')
+                             }
+                                    
+                                }
+                            
+                        },
+
             }
         }
     
