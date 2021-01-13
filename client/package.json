@@ -2,9 +2,6 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "graphql": "^15.4.0",
-    "react": "^15.3.1",
-    "presets": ["env", "react"]
-
-  } 
-  
+    "react": "^15.3.1"
+  }
 }
