@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 const Conn = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
 
-const User = Conn.define('user', {
+const User = Conn.define('User', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -24,12 +24,12 @@ const User = Conn.define('user', {
       type: Sequelize.INTEGER(10),
       allowNull: false
     },
-    email: {
+    mail: {
       type: Sequelize.STRING(60),
-      validate: {
-        isEmail: true
-      }
     }
+  },{
+    timestamps: false,
+    tableName: 'User'
   });
 
   Conn
