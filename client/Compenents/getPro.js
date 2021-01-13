@@ -10,7 +10,7 @@ function GetPro(){
 
     }, [data])
     return(
-        "<div> </div>"
+        <div> </div>
     )
 
 }

@@ -1,30 +1,28 @@
-module.import React from 'react';
-module.import ReactDOM from 'react-dom';
-module.import ApolloClient from 'apollo-client';
-module.import { ApolloProvider } from 'react-apollo';
+const {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} = require('@apollo/client');
+const {onError} = require('@apollo/client/link/error');
+//const {fetch} = require('node-fetch');
 
-const client = new ApolloClient({});
+const errorLink=onError(({graphqlErrors, networkError})=>{
+  if(graphqlErrors) {
+    graphqlErrors.map(({message,location, path})=> {
+      alert(`Graphql erro ${message}`);
+    });
+  }
+});
 
-const Root = () => {
-  return(
-      <ApolloProvider client={client}> 
-        <div>Lyrical</div>  
-      </ApolloProvider>
-  );
-};
-
-ReactDOM.render(
-  <Root />,
-  document.querySelector('#root')
-);
+const link = from([
+   errorLink,
+   new HttpLink({uri: "http://localhost:4000/graphql"})
+     
+]) 
+ const client = new ApolloClient({
+   cache:new InMemoryCache(),
+   link:link,
+ })
 
 
+function App() {
+    return <ApolloProvider client={client}><GetPro/> </ApolloProvider>;
+}
 
-/*function App() {
-    return (
-        
-    <ApolloProvider client={client}><GetPro/> </ApolloProvider>
-    ); 
-}*/
-
-    module.exports = Root;
+    module.exports = App;
