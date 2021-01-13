@@ -8,8 +8,8 @@ const {DataSource} = require('apollo-datasource');
 let Pro = [
     {
         id: 2,
-        firstName: "Porayko",
-        lastName: "Geoffrey",
+        fName: "Porayko",
+        lName: "Geoffrey",
         mail: "logan@gmail.com",
         phone: "06051258",
         pass: "logandu57",

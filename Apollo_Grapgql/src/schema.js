@@ -4,8 +4,8 @@ const {ApolloServer, gql} = require('apollo-server-express');
 const typeDefs = gql`
     interface User {
         id: ID
-        firstName: String
-        lastName: String
+        fName: String
+        lName: String
         mail: String
         phone: String
         pass: String
@@ -13,8 +13,8 @@ const typeDefs = gql`
 
     type Client implements User { 
         id: ID
-        firstName: String
-        lastName: String
+        fName: String
+        lName: String
         mail: String
         phone: String
         pass: String
@@ -22,8 +22,8 @@ const typeDefs = gql`
 
     type Pro implements User {
         id: ID
-        firstName: String
-        lastName: String
+        fName: String
+        lName: String
         mail: String
         phone: String
         pass: String
@@ -31,8 +31,8 @@ const typeDefs = gql`
     }
     type Lessor implements User {
         id: ID
-        firstName: String
-        lastName: String
+        fName: String
+        lName: String
         mail: String
         phone: String
         pass: String
@@ -52,6 +52,7 @@ const typeDefs = gql`
         coworking(name: String!): CoWorking
         getPro(mail: String!, pass: String!): Pro
         getLessor(mail: String!, pass: String!): Lessor
+        AddUs(fName: String!, lName: String!, mail: String!, phone: String!, pass: String!): Int
     }
     type Mutation{
         CreateProAccount(id:ID!, mail:String!, pass: String!,firstName: String!, lastName: String!,compagnyName:String!): Pro

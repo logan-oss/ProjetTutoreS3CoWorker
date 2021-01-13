@@ -6,8 +6,8 @@ const {Queries} = require('./db');
 let Pro = [
     {
         id: 2,
-        firstName: "Porayko",
-        lastName: "Geoffrey",
+        fName: "Porayko",
+        lName: "Geoffrey",
         mail: "logan@gmail.com",
         phone: "06051258",
         pass: "logandu57",
@@ -18,8 +18,8 @@ let Pro = [
 let Lessor = [
     {
         id: 3,
-        firstName: "Boukada",
-        lastName: "Adel",
+        fName: "Boukada",
+        lName: "Adel",
         mail: "logan@gmail.com",
         phone: "06051258",
         pass: "logandu57",
@@ -42,8 +42,6 @@ let CoWorkingdata = [
     },
 ];
 
-console.log(Queries);
-
 var coworking = function(parent,args) { 
     var name = args.name;
     return CoWorkingdata.filter(coworking =>{  return coworking.name == name;})[0];
@@ -58,7 +56,8 @@ const resolvers = {
         coworking (parent, args)  {return CoWorkUingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
         getPro (parent, args) { return query1.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
-        GetAll: () => Queries.GetAllUser()
+        GetAll: () => Queries.GetAllUser(),
+        AddUs (parent, args) {Queries.AddUser(args.fName,args.lName,args.mail,args.phone,args.pass)}
        
     },
     Mutation: {

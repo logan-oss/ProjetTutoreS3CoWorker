@@ -15,16 +15,15 @@ const User = Conn.define('user', {
       type: Sequelize.STRING(30),
       allowNull: false
     },
-    adress: {
-    type: Sequelize.STRING(150),
-      allowNull: false
-    },
-    phone: {
-      type: Sequelize.INTEGER(10),
-      allowNull: false
-    },
     mail: {
       type: Sequelize.STRING(60),
+    },
+    phone: {
+      type: Sequelize.STRING(10),
+      allowNull: false
+    },
+    pass: {
+      type: Sequelize.STRING(15),
     }
   },{
     timestamps: false,
@@ -43,11 +42,18 @@ const User = Conn.define('user', {
  module.exports = {
     Queries: {
       GetAllUser: () => Conn.query('SELECT * FROM User').then(function success(result){
-        console.log("User:", JSON.stringify(result[0], null, 2));
         return result[0];
       }, function error(err) {
         console.log(err);
       })
+      ,
+      AddUser (fName, lName, mail, phone, pass) {
+        (async () => {
+          await Conn.sync();
+          var Cli = User.build({fName: fName, lName: lName, phone: phone, mail: mail, pass: pass });
+          await Cli.save();
+        })();
+        return 0}
     }
   };
 
