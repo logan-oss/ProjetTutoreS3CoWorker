@@ -1,3 +1,4 @@
+
 const { Sequelize } = require('sequelize');
 const Conn = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
 
@@ -40,8 +41,12 @@ const User = Conn.define('user', {
     console.error('Unable to connect to the database:', err);
   });
 
-  Conn.query('SELECT * FROM User').then(function success(result){
+ Conn.query('SELECT * FROM User').then(function success(result){
     console.log(result);
   }, function error(err) {
     console.log(err);
   })
+
+
+
+

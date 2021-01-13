@@ -34,10 +34,7 @@ const typeDefs = gql`
         address: String!
         owner: String!
     }
-<<<<<<< HEAD
    
-=======
->>>>>>> 97ce4b133655e8119362a58f1c1035159ef8b3d5
     type Query{
         Pro: [Pro],
         Lessor: [Lessor],

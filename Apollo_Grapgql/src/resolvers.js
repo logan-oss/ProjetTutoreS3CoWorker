@@ -13,6 +13,7 @@ const sequelize = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz
     });*/
 //--------------------------------------------------------------------------//
 
+
 let Pro = [
     {
         id: 2,
@@ -60,14 +61,14 @@ var coworking = function(parent,args) {
 }
 
 
-
+console.log(query1);
 
 const resolvers = {
     Query: {
-        Pro: () => Pro,
+        Pro: () => query1,
         Lessor: () => Lessor,  
-        coworking (parent, args)  {return CoWorkingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
-        getPro (parent, args) { return Pro.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
+        coworking (parent, args)  {return CoWorkUingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
+        getPro (parent, args) { return query1.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
        
     },
