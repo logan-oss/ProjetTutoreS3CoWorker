@@ -1,16 +1,5 @@
 //------------------------------Base de donnée--------------------------------------//
-/*const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('mysql://porayko2u_appli:Nojogu-2@devbdd.iutmetz.univ-lorraine.fr:3306/porayko2u_CoWorking');
-
-
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-      console.error('Unable to connect to the database:', err);
-    });*/
+const {Queries} = require('./db');
 //--------------------------------------------------------------------------//
 
 
@@ -53,7 +42,7 @@ let CoWorkingdata = [
     },
 ];
 
-
+console.log(Queries);
 
 var coworking = function(parent,args) { 
     var name = args.name;
@@ -61,7 +50,6 @@ var coworking = function(parent,args) {
 }
 
 
-console.log(query1);
 
 const resolvers = {
     Query: {
@@ -70,6 +58,7 @@ const resolvers = {
         coworking (parent, args)  {return CoWorkUingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
         getPro (parent, args) { return query1.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
+        GetAll: () => Queries.GetAllUser()
        
     },
     Mutation: {
