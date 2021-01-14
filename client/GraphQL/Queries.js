@@ -4,8 +4,8 @@ const{gql} = require ('@apollo/client')
 query{
     Pro{
       id
-      lastName
-      firstName
+      lName
+      fName
   
     }
   }

@@ -9,10 +9,12 @@ const client = new ApolloClient({
 });
 client.query({
     query: gql`
-    query{Lessor
-        {mail,
-        fName,
-        lName,
-        pass,
-       }}`
+    query{
+        GetAllService{
+          id
+          description
+          time
+          price
+        }
+      }`
   }).then(result => console.log(result));
