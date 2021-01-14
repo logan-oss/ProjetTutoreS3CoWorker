@@ -51,8 +51,9 @@ var coworking = function(parent,args) {
 
 const resolvers = {
     Query: {
-        Pro: () => query1,
+        Pro: () => Pro,
         Lessor: () => Lessor,  
+        GetAllService: () => Queries.GetAllService(),
         coworking (parent, args)  {return CoWorkUingdata.filter(coworking =>{  return coworking.name == args.name;})[0];},
         getPro (parent, args) { return query1.filter(pro =>{  return pro.mail == args.mail && pro.pass==args.pass ;})[0];},
         getLessor (parent, args) { return Lessor.filter(lessor =>{  return lessor.mail == args.mail && lessor.pass==args.pass ;})[0];},
