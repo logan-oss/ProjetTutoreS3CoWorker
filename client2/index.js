@@ -13,8 +13,6 @@ client.query({
         GetAllService{
           id
           description
-          time
-          price
         }
       }`
-  }).then(result => console.log(result));
+  }).then(result => console.log("Service:", JSON.stringify(result, null, 2)));

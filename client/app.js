@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const {
   ApolloClient,
   InMemoryCache,
@@ -35,3 +36,18 @@ function App() {
 }
 
 module.exports = App;
+=======
+const {ApolloClient,gql,NormalizedCacheObject} = require('@apollo/client');
+const { cache } = require('./cache');
+const typeDefs = gql`
+  extend type Query {
+    isLoggedIn: Boolean!
+    cartItems: [ID!]!
+  }
+`;
+
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache,
+  uri: 'http://localhost:4000/graphql'
+});
+>>>>>>> 134644fc212ad7be5a7526927e1c73d12cf6ff2c
