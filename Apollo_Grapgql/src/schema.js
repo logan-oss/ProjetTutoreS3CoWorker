@@ -79,12 +79,15 @@ const typeDefs = gql`
         Pro: [Pro],
         Lessor: [Lessor],
         GetAll: [Client],
-        GetAllService: [Service]
-        AddService(description: String!, price: String! , time: String!, proName: String!, idType: ID!)
-        coworking(name: String!): CoWorkingSpace
-        getPro(mail: String!, pass: String!): Pro
-        getLessor(mail: String!, pass: String!): Lessor
-        AddUs(fName: String!, lName: String!, mail: String!, phone: String!, pass: String!): Int
+        GetAllService: [Service],
+        GetAllType: [ WorkSpaceType],
+        AddService(description: String!, price: String! , time: String!, proName: String!, idType: ID!):Int,
+        coworking(name: String!): CoWorkingSpace,
+        GetAllCWS : [CoWorkingSpace],
+        GetAllServicePro (id:ID!): [Service]
+        getPro(mail: String!, pass: String!): Pro,
+        getLessor(mail: String!, pass: String!): Lessor,
+        AddUs(fName: String!, lName: String!, mail: String!, phone: String!, pass: String!): Int,
     }
     type Mutation{
         CreateProAccount(id:ID!, mail:String!, pass: String!,firstName: String!, lastName: String!,compagnyName:String!): Pro

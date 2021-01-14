@@ -220,18 +220,41 @@ const User = Conn.define('user', {
         console.log(err);
       })
       ,
-      AddService (description, price, time, proName, idType){
-        const pro = proName.split('');
-        Conn.query('SELECT p.id FROM Pro p, User u WHERE u.fName=',pro[0],'AND u.lName=',pro[1],'AND u.id=p.idUser').then(function success(result){
-          const idPro= result[0];
-          (async () => {
-            await Conn.sync();
-            var service = Service.build({description: description, price: price, time: time, idPro: idPro, idType: idType});
-            await service.save();
-          })();
+      GetAllType: () => Conn.query('SELECT * FROM `WorkSpaceType`').then(function success(result){
+        return result[0];
+      }, function error(err) {
+        console.log(err);
+      })
+      ,
+      GetAllServicePro (id) {
+        Conn.query('SELECT * FROM Service s, Pro p WHERE p.id=s.idPro AND s.idPro=',id).then(function success(result){
+          return result[0];
         }, function error(err) {
           console.log(err);
         })
+        return 0
+      },
+      GetPro (fName,lName) {
+        Conn.query('SELECT p.id FROM Pro p, User u WHERE u.fName=',fName,'AND u.lName=',lName,'AND u.id=p.idUser').then(function success(result){
+          return result[0];
+        }, function error(err) {
+          console.log(err);
+        })
+        return 0
+      },
+      GetAllCWS: () => Conn.query('SELECT * FROM `CoWorkingSpace`').then(function success(result){
+        return result[0];
+      }, function error(err) {
+        console.log(err);
+      })
+      ,
+      AddService (description, price, time, proName, idType){
+        const pro = proName.split('');
+          (async () => {
+            await Conn.sync();
+            var service = Service.build({description: description, price: price, time: time, idPro: this.GetPro(pro[0],pro[1]), idType: idType});
+            await service.save();
+          })();
       }
     }
   };
@@ -246,13 +269,10 @@ const User = Conn.define('user', {
 
 
   /*
-  AddPro(args)
   AddLessor(args)
   AddCWS(args)
   AddBooking(args)
   AddWS(args)
-  GetAllCWS()
-  GetAllType()
   GetPlanningPro(args)
   GetPlanningClient(args)
   GetAllServicePro(args)
