@@ -211,13 +211,28 @@ const User = Conn.define('user', {
           var Cli = User.build({fName: fName, lName: lName, phone: phone, mail: mail, pass: pass });
           await Cli.save();
         })();
-        return 0}
+        return 0
+      }
       ,
-      GetAllService: () => Conn.query('SELECT s.id, s.description, s.price, s.time,CONCAT(u.fName," ",u.lName) FROM Service s, Pro p, User u WHERE s.idPro=p.id AND p.idUser=u.id').then(function success(result){
+      GetAllService: () => Conn.query('SELECT s.id, s.description, s.price, s.time,CONCAT(u.fName," ",u.lName),s.idType FROM Service s, Pro p, User u WHERE s.idPro=p.id AND p.idUser=u.id').then(function success(result){
         return result[0];
       }, function error(err) {
         console.log(err);
       })
+      ,
+      AddService (description, price, time, proName, idType){
+        const pro = proName.split('');
+        Conn.query('SELECT p.id FROM Pro p, User u WHERE u.fName=',pro[0],'AND u.lName=',pro[1],'AND u.id=p.idUser').then(function success(result){
+          const idPro= result[0];
+          (async () => {
+            await Conn.sync();
+            var service = Service.build({description: description, price: price, time: time, idPro: idPro, idType: idType});
+            await service.save();
+          })();
+        }, function error(err) {
+          console.log(err);
+        })
+      }
     }
   };
 
@@ -228,3 +243,18 @@ const User = Conn.define('user', {
   }, function error(err) {
     console.log(err);
   })*/
+
+
+  /*
+  AddPro(args)
+  AddLessor(args)
+  AddCWS(args)
+  AddBooking(args)
+  AddWS(args)
+  GetAllCWS()
+  GetAllType()
+  GetPlanningPro(args)
+  GetPlanningClient(args)
+  GetAllServicePro(args)
+  GetAllCWSLessor(args)
+  */

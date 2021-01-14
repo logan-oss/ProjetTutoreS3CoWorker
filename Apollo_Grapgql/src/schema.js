@@ -45,6 +45,7 @@ const typeDefs = gql`
         price: String!
         time: String!
         proName: String!
+        idType: ID!
     }
 
     type CoWorkingSpace {
@@ -79,6 +80,7 @@ const typeDefs = gql`
         Lessor: [Lessor],
         GetAll: [Client],
         GetAllService: [Service]
+        AddService(description: String!, price: String! , time: String!, proName: String!, idType: ID!)
         coworking(name: String!): CoWorkingSpace
         getPro(mail: String!, pass: String!): Pro
         getLessor(mail: String!, pass: String!): Lessor
